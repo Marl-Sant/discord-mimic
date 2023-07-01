@@ -90,6 +90,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE channelmembers SET SCHEMA {SCHEMA};")
+        
     op.create_table('channelmessages',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('channel_id', sa.Integer(), nullable=True),
