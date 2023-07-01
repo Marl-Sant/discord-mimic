@@ -1,8 +1,8 @@
-"""fixed drop
+"""fixed droppinghs
 
-Revision ID: 67211e8a4f7a
+Revision ID: ed827c8e4668
 Revises: 
-Create Date: 2023-07-01 16:08:34.240062
+Create Date: 2023-07-01 16:12:20.388167
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '67211e8a4f7a'
+revision = 'ed827c8e4668'
 down_revision = None
 branch_labels = None
 depends_on = None
