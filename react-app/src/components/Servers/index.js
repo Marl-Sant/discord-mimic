@@ -38,7 +38,6 @@ const Servers = ({ userServers }) => {
               src={`${server.serverIcon}`}
               alt="server icon"
             />
-            <p>{server.name}</p>
           </NavLink>
         ))}
       </div>

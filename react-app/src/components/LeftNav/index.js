@@ -27,19 +27,6 @@ const LeftNav = ({userServers}) => {
   return (
     user && (
       <div className="left" id="left-nav">
-        <NavLink
-          className="home-button"
-          to={`/discovery`}
-        >
-           <div className="icon_container">
-            <img
-              className="left_side_icon"
-              src="https://res.cloudinary.com/dhruiovd0/image/upload/v1686429916/152428905-house-icon-home-icon-house-icon-isolated-on-white-background_qh5drx.jpg"
-              alt="home"
-            ></img>
-          </div>
-        </NavLink>
-        <p>{user.username}</p>
             <button onClick={handleLogout}>Log Out</button>
         <span className="home-space" />
         <Servers
@@ -47,9 +34,20 @@ const LeftNav = ({userServers}) => {
         ></Servers>
          <span className="home-space" />
         <CreateNewServerModal/>
-        <span className="home-space" />
         <Channels currentChannels={currentChannels} />
-        <span className="home-space" />
+        <NavLink
+          className="home-button"
+          to={`/discovery`}
+        >
+           <div className="icon_container">
+           <i class="fa fa-regular fa-compass"></i>
+            {/* <img
+              className="left_side_icon"
+              src="https://res.cloudinary.com/dhruiovd0/image/upload/v1686429916/152428905-house-icon-home-icon-house-icon-isolated-on-white-background_qh5drx.jpg"
+              alt="home"
+            ></img> */}
+          </div>
+        </NavLink>
         <CreateChannelModal />
       </div>
     )

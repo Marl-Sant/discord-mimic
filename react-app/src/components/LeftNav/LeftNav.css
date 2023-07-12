@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 90px;
-  background-color: #7289da;
+  background-color: #1e2124;
   gap: 10px;
   height: 100%;
   position: fixed;
@@ -12,7 +12,10 @@
   top: 0;
 }
 
-a {
+.left a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: inherit;
 }
@@ -27,10 +30,19 @@ button{
   cursor: pointer;
 }
 
-.home-space {
+/* .home-space {
   width: 60%;
   height: 2px;
   background-color: #373a3f;
+} */
+
+.create-a-server-button{
+  all:unset;
+  font-size: xx-large;
+  color: green;
+  height: 28px;
+  width: 28px;
+  border-radius: 100%;
 }
 
 .home-button {
@@ -38,9 +50,10 @@ button{
 }
 
 .icon_container {
+  font-size: xx-large;
+  color: green;
   width: 44px;
   height: 44px;
-  background-color: #7289da;
   border-radius: 100%;
   display: flex;
   align-items: center;
