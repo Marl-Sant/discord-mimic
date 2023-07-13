@@ -14,6 +14,13 @@
     top:0;
   }
 
+.left-server a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
 .details {
     margin-top: 15px;
     margin-bottom: 15px;

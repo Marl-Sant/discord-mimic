@@ -6,7 +6,7 @@
     margin-top: 4px;
     margin-bottom: 20px;
     align-self: center;
-    padding-left: 34px;
+    padding-left: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,5 +22,6 @@
     border-style: none;
     outline: none;
     color: inherit;
+    resize: none;
     border-radius: 5px;
   }
