@@ -8,8 +8,9 @@ const CreateChannelModal = () => {
     <>
          <>
         <OpenModalButton
-        buttonText="Create a Channel"
+        buttonText={<i class="fa fa-solid fa-plus"></i>}
         modalComponent={<CreateANewChannel />}
+        buttonStyle={"create-a-channel-button"}
       />
     </>
     </>

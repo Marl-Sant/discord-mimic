@@ -1,0 +1,25 @@
+.left-server {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 180px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    background-color: #282b30;
+    gap: 10px;
+    height: 100%;
+    position: fixed;
+    left: 87px;
+    top:0;
+  }
+
+.details {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.create-channel{
+    margin-top: auto;
+    margin-bottom: 10px;
+}

@@ -2,7 +2,7 @@ import "./LeftNav.css";
 import Servers from "../Servers";
 import Channels from "../Channels";
 import { NavLink } from "react-router-dom";
-import  CreateNewServerModal from "../CreateNewServer/CreateNewServerModal"
+import CreateNewServerModal from "../CreateNewServer/CreateNewServerModal"
 import CreateChannelModal from "../CreateANewChannel/CreateANewChannelModal"
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/session";
@@ -11,7 +11,7 @@ import { getAChannel } from "../../store/channel";
 import { useEffect } from "react";
 import { getAllServers } from "../../store/servers";
 
-const LeftNav = ({userServers}) => {
+const LeftNav = ({ userServers }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user)
   // const userServers = useSelector((state) => state.serversReducer?.userServers)
@@ -27,20 +27,18 @@ const LeftNav = ({userServers}) => {
   return (
     user && (
       <div className="left" id="left-nav">
-            <button onClick={handleLogout}>Log Out</button>
         <span className="home-space" />
         <Servers
           userServers={userServers}
         ></Servers>
-         <span className="home-space" />
-        <CreateNewServerModal/>
-        <Channels currentChannels={currentChannels} />
+        <span className="home-space" />
+        <CreateNewServerModal />
         <NavLink
           className="home-button"
           to={`/discovery`}
         >
-           <div className="icon_container">
-           <i class="fa fa-regular fa-compass"></i>
+          <div className="icon_container">
+            <i class="fa fa-regular fa-compass"></i>
             {/* <img
               className="left_side_icon"
               src="https://res.cloudinary.com/dhruiovd0/image/upload/v1686429916/152428905-house-icon-home-icon-house-icon-isolated-on-white-background_qh5drx.jpg"
@@ -48,7 +46,11 @@ const LeftNav = ({userServers}) => {
             ></img> */}
           </div>
         </NavLink>
-        <CreateChannelModal />
+        <div className="logout-container">
+          <p><img src={`${user.profilePic}`} className="left_side_icon" />
+            <br></br>{user.username}</p>
+          <button onClick={handleLogout}>Log Out</button>
+        </div>
       </div>
     )
   );

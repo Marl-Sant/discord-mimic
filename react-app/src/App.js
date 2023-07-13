@@ -10,6 +10,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LeftNavBar from "./components/LeftNav";
+import LeftServerDetails from "./components/LeftServerDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
           </Route>
           <Route path="/channels">
           <LeftNavBar userServers={userServers}/>
+          <LeftServerDetails />
             <MainView />
           </Route>
         </Switch>
