@@ -76,7 +76,6 @@ const SelectedChannel = () => {
 
   return (
     <div className="move-it-over">
-      <h1>{currentChannel.name}</h1>
       {isServerOwner && (
         <OpenModalButton
           buttonText="Edit a Channel"

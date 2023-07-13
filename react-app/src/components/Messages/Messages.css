@@ -1,5 +1,5 @@
 .messages {
-    max-height: 84vh;
+    max-height: 90vh;
     overflow-y: auto;
     width: 100%;
     display: flex;
@@ -34,6 +34,8 @@
     gap: 10px;
   }
 
-  .message_content {
-    margin: 0 10px 10px 10px;
+  .message-content {
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-right: 175px;
   }
