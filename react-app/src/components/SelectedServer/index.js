@@ -41,12 +41,6 @@ const SelectedServer = () => {
       return (
         loaded && (
           <div>
-            <div className="move-it-over">
-            {isServerOwner && (
-              <EditAServerModal/>
-        )}
-              
-            </div>
             {/* <div className="server-channel-container">
             {channelLoaded && (
               <Channels channels={channelsObj} className="channels" />

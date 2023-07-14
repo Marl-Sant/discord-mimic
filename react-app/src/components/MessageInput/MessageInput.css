@@ -23,5 +23,6 @@
     outline: none;
     color: inherit;
     resize: none;
+    overflow: hidden;
     border-radius: 5px;
   }

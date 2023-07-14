@@ -84,8 +84,9 @@ const SelectedChannel = () => {
       )}
 
       {currentChannel?.messages && <Messages messages={messages} />}
-
-      <MessageInput sendMessage={sendMessage} className="chat_input" />
+      <div className="message-input-container">
+        <MessageInput sendMessage={sendMessage} className="chat_input" />
+      </div>
     </div>
   );
 };

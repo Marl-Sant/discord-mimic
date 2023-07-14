@@ -30,3 +30,23 @@
     margin-top: auto;
     margin-bottom: 10px;
 }
+
+.home-server-left {
+  width: 95%;
+  height: 2px;
+  background-color: #7289da;
+}
+
+.edit-a-server-button{
+  all:unset;
+  font-size: large;
+  color: #7289da;
+  position: absolute;
+  top: 1;
+  right: 10px;
+  /* height: 28px;
+  width: 28px;
+  border-radius: 100%;
+  margin-bottom: 5px;
+  right:auto; */
+}

@@ -31,11 +31,11 @@ button{
   cursor: pointer;
 }
 
-/* .home-space {
+.home-space {
   width: 60%;
   height: 2px;
   background-color: #373a3f;
-} */
+}
 
 .create-a-server-button{
   all:unset;

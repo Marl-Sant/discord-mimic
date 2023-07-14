@@ -9,7 +9,7 @@ import EditAChannel from "../EditAChannelModal";
 import OpenModalButton from "../OpenModalButton";
 
 
-const Channels = ({currentChannels}) => {
+const Channels = ({ currentChannels }) => {
     const { channelId } = useParams();
     const [ownerId, setOwnerId] = useState();
     const [currentChannelId, setCurrentChannelId] = useState(channelId);
@@ -21,6 +21,10 @@ const Channels = ({currentChannels}) => {
     const channelsObj = useSelector((state) => state.serversReducer.currentServer.channels);
     const dispatch = useDispatch();
     const [loaded, setLoaded] = useState(false);
+    const currentUserId = useSelector((state) => state.session.user.id)
+    const currentServerOwnerId = useSelector((state) => state.serversReducer?.currentServer?.ownerId?.id)
+    const isServerOwner = currentUserId === currentServerOwnerId
+
     useEffect(() => {
         if (channelsObj) {
             setOwnerId(currentServer.ownerId.id);
@@ -63,17 +67,14 @@ const Channels = ({currentChannels}) => {
                             onMouseEnter={() => setHoverId(channel.id)}
                             onMouseLeave={() => setHoverId(null)}
                         >
-                            <p>{channel.name}</p>
-                            {/* {((ownerId === user.id && currentChannelId * 1 === channel.id) ||
-                                (ownerId === user.id && hoverId === channel.id)) &&
-                                channel.name !== "General Chat" && (
-                                    <div className="">
-                                            <OpenModalButton
-                                            buttonText="Edit a Channel"
-                                            modalComponent={<EditAChannel />}
-                                        />
-                                    </div>
-                                )} */}
+                            <p>{channel.name}
+                            {isServerOwner && (
+                                <OpenModalButton
+                                    buttonText={<i class="fa fa-solid fa-pen"></i>}
+                                    modalComponent={<EditAChannel />}
+                                    buttonStyle={"edit-a-server-button"}
+                                />
+                            )}</p>
                         </div>
                     </NavLink>
                 ))}
