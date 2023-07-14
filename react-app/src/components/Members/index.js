@@ -21,15 +21,15 @@ const Members = () => {
   if (loaded && currentServerMembers) {
     return (
       <div className="right">
-        <h2>Members</h2>
+        <p>Members</p>
         {Object.values(currentServerMembers)?.map((member) => (
-          <div className="" key={member.id * 2}>
+          <div className="member-container" key={member.id * 2}>
             <img
               className="member_photo"
               src={`${member.profilePic}`}
               alt="profile pic"
             ></img>
-            <h4>{member.username}</h4>
+            <span className="member_name">{member.username}</span>
           </div>
         ))}
       </div>

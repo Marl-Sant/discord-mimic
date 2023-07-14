@@ -76,13 +76,6 @@ const SelectedChannel = () => {
 
   return (
     <div className="move-it-over">
-      {isServerOwner && (
-        <OpenModalButton
-          buttonText="Edit a Channel"
-          modalComponent={<EditAChannel />}
-        />
-      )}
-
       {currentChannel?.messages && <Messages messages={messages} />}
       <div className="message-input-container">
         <MessageInput sendMessage={sendMessage} className="chat_input" />
