@@ -9,7 +9,7 @@ const CreateNewServerModal = () => {
   return (
     <>
         <OpenModalButton
-        buttonText={<i class="fa fa-solid fa-plus"></i>}
+        buttonText={<i className="fa fa-solid fa-plus"></i>}
         modalComponent={<CreateNewServer />}
         buttonStyle={"create-a-server-button"}
       />

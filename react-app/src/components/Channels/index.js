@@ -70,7 +70,7 @@ const Channels = ({ currentChannels }) => {
                             <p>{channel.name}
                             {isServerOwner && (
                                 <OpenModalButton
-                                    buttonText={<i class="fa fa-solid fa-pen"></i>}
+                                    buttonText={<i className="fa fa-solid fa-pen"></i>}
                                     modalComponent={<EditAChannel />}
                                     buttonStyle={"edit-a-server-button"}
                                 />

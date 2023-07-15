@@ -1,9 +1,18 @@
 import "./Messages.css";
+import { useRef, useEffect } from "react";
 
 const Messages = ({ messages }) => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [messages]);
 
   return (
-    <div className="messages">
+    <div ref={containerRef} className="messages">
       {messages?.map((message) => (
         <div className="message" key={message.id}>
           <div className="user">

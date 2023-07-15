@@ -7,7 +7,7 @@ const EditAServerModal = () => {
   return (
     <>
         <OpenModalButton
-        buttonText={<i class="fa fa-solid fa-pen"></i>}
+        buttonText={<i className="fa fa-solid fa-pen"></i>}
         modalComponent={<EditAServer />}
         buttonStyle={"edit-a-server-button"}
       />
