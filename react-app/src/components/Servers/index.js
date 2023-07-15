@@ -10,6 +10,7 @@ import { Redirect } from "react-router-dom";
 
 const Servers = ({ userServers }) => {
   const [loaded, setLoaded] = useState(false);
+  const [selectedServerId, setSelectedServerId] = useState(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,6 +21,7 @@ const Servers = ({ userServers }) => {
   const handleServerClick = async (serverId, channelId) => {
     await dispatch(getAServer(serverId))
       .then(() => dispatch(getAChannel(channelId)))
+      setSelectedServerId(serverId);
 
     return <Redirect to={`/channels/${serverId}/${channelId}`} />;
   };
@@ -32,9 +34,10 @@ const Servers = ({ userServers }) => {
             to={`/channels/${server.id}/${server.generalChatId}`}
             onClick={() => handleServerClick(server.id, server.generalChatId)}
             key={server.id}
+            title={server.name}
           >
             <img
-              className="left-server-icons"
+              className={`left-server-icons ${selectedServerId === server.id ? "selected" : ""}`}
               src={`${server.serverIcon}`}
               alt="server icon"
             />

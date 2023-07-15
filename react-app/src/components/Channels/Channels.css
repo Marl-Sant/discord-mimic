@@ -27,3 +27,18 @@
     gap: 5px;
     align-items: center;
   }
+
+  .channel-item.selected {
+    position: relative;
+  }
+
+  .indicator {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+  }

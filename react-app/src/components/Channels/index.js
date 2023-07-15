@@ -63,11 +63,12 @@ const Channels = ({ currentChannels }) => {
                         onClick={() => handleChannelChange(channel.id)}
                     >
                         <div
-                            className=""
+                            className={`channel-item ${currentChannelId === channel.id ? "selected" : ""}`}
                             onMouseEnter={() => setHoverId(channel.id)}
                             onMouseLeave={() => setHoverId(null)}
                         >
                             <p>{channel.name}
+                            {currentChannelId === channel.id && <span className="indicator"></span>}
                             {isServerOwner && (
                                 <OpenModalButton
                                     buttonText={<i className="fa fa-solid fa-pen"></i>}
