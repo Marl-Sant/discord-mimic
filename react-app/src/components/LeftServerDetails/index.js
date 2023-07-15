@@ -48,7 +48,7 @@ const LeftServerDetails = () => {
                 ) :
                     null
                 }
-                {currentChannels && (
+                {currentChannels && isServerOwner && (
                     <div className="create-channel">
                         <CreateChannelModal />
                     </div>
