@@ -51,7 +51,9 @@ function LoginFormModal() {
             required
           />
         </label>
+        <div className="login-container">
         <button type="submit">Log In</button>
+        </div>
       </form>
     </div>
   );

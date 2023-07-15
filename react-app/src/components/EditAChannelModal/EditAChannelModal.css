@@ -1,11 +1,26 @@
 .modal-edit {
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     width: auto;
     height: auto;
     padding: 15px;
-    border-style: dotted;
+    border-radius: 15px;
+    background-color: #36393e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-create-server {
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    width: auto;
+    height: auto;
+    padding: 15px;
+    border-radius: 15px;
     background-color: #36393e;
     display: flex;
     flex-direction: column;
@@ -26,6 +41,27 @@
     justify-content: center;
 }
 
+.modal-create-server input {
+    overflow: auto;
+    border-style: double;
+    border-color: aliceblue;
+    background-color: #40444b;
+    color: aliceblue;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 .button-container {
     margin: 10px;
     padding: 10px;
@@ -33,7 +69,7 @@
 }
 
 .button-like-text {
-    display: inline-block;
+    /* display: inline-block; */
     padding: 10px 20px;
     background-color: #7289da;
     color: #fff;

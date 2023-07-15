@@ -124,11 +124,12 @@ const EditAServer = () => {
                                     className="server-name"
                                     placeholder={server.name}
                                     value={name}
+                                    maxLength={15}
                                     onChange={(e) => setName(e.target.value)}
                                 ></input>
                             </div>
                             <div
-                        className="button-container button-like-text"
+                        className="button-container button-like-text login-container"
                         onClick={handleDelete}
                         style={{ cursor: "pointer", gap: "10px" }}
                     >

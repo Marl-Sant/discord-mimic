@@ -134,6 +134,7 @@ const EditAChannel = ({ user, setShowModal }) => {
                   className="channel-name"
                   placeholder={channel.name}
                   value={name}
+                  maxLength={15}
                   onChange={(e) => setName(e.target.value.replace(" ", "-"))}
                 ></input>
                 <div

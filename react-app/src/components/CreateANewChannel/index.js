@@ -96,6 +96,7 @@ const CreateANewChannel = () => {
           id="channel-name"
           onChange={(e) => setName(e.target.value.replace(" ", "-"))}
           placeholder="new-channel"
+          maxLength={15}
           value={name}
         />
       </div>

@@ -90,7 +90,7 @@ const CreateNewServer = () => {
   };
 
   return ( 
-    <div className="modal-edit">
+    <div className="modal-create-server">
       {showHomeCreate && (
         <div className="create-new-server-home">
           <h1>Create Server</h1>
@@ -156,6 +156,7 @@ const CreateNewServer = () => {
             <input
               id="server-name"
               className="create-input"
+              maxLength={15}
               placeholder={`${user.username}'s server`}
               onChange={(e) => setName(e.target.value)}
             ></input>
