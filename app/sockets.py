@@ -6,7 +6,7 @@ socketio = SocketIO()
 
 if os.environ.get("FLASK_ENV") == "production":
     origins = [
-        "https://fiscord-project.onrender.com"
+        "https://miscord-project.onrender.com/"
     ]
 else:
     origins = "*"
