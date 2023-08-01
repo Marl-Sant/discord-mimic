@@ -33,3 +33,7 @@ def on_leave(data):
 def on_chat_sent(data):
     print(data, "adashnujhfuiohuijwnhfdiuwenhfduiwenfiuowendfeiuwodnuweiodfnewaiundfewaq@!#@!#@$!$!@#@$$!#$!#@$#$")
     emit('message', data['message'], to=data['room'])
+
+# @socketio.on("delete")
+# def delete(data):
+    

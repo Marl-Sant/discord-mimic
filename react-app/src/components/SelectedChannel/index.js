@@ -38,7 +38,6 @@ const SelectedChannel = () => {
     socket = io();
 
     socket.on("message", (data) => {
-      console.log(data)
       // setMessages((messages) => [...messages, data["message"]]);
       dispatch(addChannelMessage(data))
     });

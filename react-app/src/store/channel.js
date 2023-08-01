@@ -9,6 +9,7 @@ const SET_CURRENT_CHANNEL = "currentChannel/SetCurrentChannel";
 const ADD_CHANNEL_MESSAGE = "currentChannel/AddMessage";
 const UPDATE_CHANNEL_MESSAGE = "currentChannel/UpdateMessage";
 const REMOVE_CHANNEL_MESSAGE = "currentChannel/RemoveMessage";
+const EDIT_CHANNEL_MESSAGE = "currentChannel/EditChannelMessage";
 
 // set channels in the store
 export const setChannels = (channels) => {
@@ -24,8 +25,8 @@ export const addChannel = (serverId, channel) => {
 export const postChannel = (channel) => async (dispatch) => {
     const res = await fetch(`/api/servers/${channel.serverId}/channels`, {
         method: "POST",
-        headers:{
-            "Content-type" : "application/json"
+        headers: {
+            "Content-type": "application/json"
         },
         body: JSON.stringify(channel),
     });
@@ -44,12 +45,11 @@ export const updateChannel = (serverId, channel) => {
 };
 
 export const putChannel = (channel) => async (dispatch) => {
-    console.log(channel)
     const res = await fetch(
         `/api/servers/${channel.serverId}/channels/${channel.id}`,
         {
             method: "PUT",
-            headers:{"Content-Type" : "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(channel),
         }
     );
@@ -101,11 +101,29 @@ export const postMessage = (channelId, formData) => async (dispatch) => {
 
     const newMessage = await res.json();
 
-    console.log(newMessage)
+
 
     dispatch(addChannelMessage(newMessage));
     return newMessage;
 };
+
+//edit a channel in the store
+
+export const editChannelMessage = (message) => {
+    return { type: EDIT_CHANNEL_MESSAGE, message };
+}
+
+export const editMessage = (channelId, messageId, formData) => async (dispatch) => {
+    const res = await fetch(
+        `/api/channels/${channelId}/messages/${messageId}`
+        , {
+            method: "PUT",
+            body: formData,
+        });
+    const editedMessage = await res.json();
+
+    dispatch(editChannelMessage(editedMessage))
+}
 
 //delete a message from the store
 
@@ -118,10 +136,12 @@ export const deleteChannelMessage =
         const res = await fetch(
             `/api/channels/${channelId}/messages/${messageId}`,
             {
-                method: "DELETE",
+                method: "DELETE"
             }
         );
         const deletedMessage = await res.json();
+
+        console.log(deletedMessage)
         dispatch(removeChannelMessage(deletedMessage.messageId));
     };
 
@@ -179,8 +199,9 @@ const channelsReducer = (
         }
 
         case REMOVE_CHANNEL_MESSAGE: {
-            delete newState.currentChannel.messages[action.messageId];
-            return newState;
+            const liveChatState = global.structuredClone(state)
+            delete liveChatState.currentChannel.messages[action.messageId];
+            return liveChatState;
         }
         default:
             return state;
