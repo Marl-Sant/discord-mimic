@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import OpenModalButton from "../OpenModalButton";
 import EditAChannel from "../EditAChannelModal";
-import { addChannelMessage, getAChannel, postMessage } from "../../store/channel";
+import { addChannelMessage, getAChannel, postMessage, deleteChannelMessage } from "../../store/channel";
 import { io } from 'socket.io-client';
 let socket;
+
 const SelectedChannel = () => {
   const currentChannel = useSelector((state) => state.channelsReducer.currentChannel);
   const currentUserId = useSelector((state) => state.session.user.id)
@@ -42,6 +43,11 @@ const SelectedChannel = () => {
       dispatch(addChannelMessage(data))
     });
 
+    socket.on("delete", (data) => {
+      // setMessages((messages) => [...messages, data["message"]]);
+      dispatch(deleteChannelMessage(data))
+    });
+
     // socket.emit("join_room", {"room": socketRoom})
 
     // when component unmounts, disconnect
@@ -69,13 +75,20 @@ const SelectedChannel = () => {
   const sendMessage = async (formData) => {
     await dispatch(postMessage(channelId, formData))
       .then((message) =>
-        socket.emit('message', { 'message': message, 'room': socketRoom })
+        socket.emit('message', { 'message': message, 'room': socketRoom }),
       );
   };
 
+  const handleMessageDelete = async (channelId, messageId) => {
+    await dispatch(deleteChannelMessage(channelId, messageId))
+      .then((data) =>
+        socket.emit('delete', {'channelId': channelId, 'messageId': messageId, 'room': socketRoom })
+      )
+  }
+
   return (
     <div className="move-it-over">
-      {currentChannel?.messages && <Messages messages={messages} />}
+      {currentChannel?.messages && <Messages messages={messages} handleMessageDelete={handleMessageDelete} />}
       <div className="message-input-container">
         <MessageInput sendMessage={sendMessage} className="chat_input" />
       </div>

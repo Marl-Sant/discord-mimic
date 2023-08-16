@@ -94,15 +94,13 @@ export const addChannelMessage = (message) => {
 };
 
 export const postMessage = (channelId, formData) => async (dispatch) => {
+    console.log(channelId,"asdasddsdasdDFFDWEFE#FWRFWRFWFWSFDSFWDSFDSFSDF")
     const res = await fetch(`/api/channels/${channelId}/messages`, {
         method: "POST",
         body: formData,
     });
 
     const newMessage = await res.json();
-
-
-
     dispatch(addChannelMessage(newMessage));
     return newMessage;
 };
@@ -127,12 +125,13 @@ export const editMessage = (channelId, messageId, formData) => async (dispatch) 
 
 //delete a message from the store
 
-export const removeChannelMessage = (messageId) => {
-    return { type: REMOVE_CHANNEL_MESSAGE, messageId };
+export const removeChannelMessage = (messageId, channelId) => {
+    return { type: REMOVE_CHANNEL_MESSAGE, messageId, channelId };
 };
 
 export const deleteChannelMessage =
     (channelId, messageId) => async (dispatch) => {
+        console.log(channelId,"asdasddsdasdDFFDWEFE#FWRFWRFWFWSFDSFWDSFDSFSDF")
         const res = await fetch(
             `/api/channels/${channelId}/messages/${messageId}`,
             {
@@ -142,7 +141,7 @@ export const deleteChannelMessage =
         const deletedMessage = await res.json();
 
         console.log(deletedMessage)
-        dispatch(removeChannelMessage(deletedMessage.messageId));
+        dispatch(removeChannelMessage(deletedMessage.messageId, channelId));
     };
 
 const channelsReducer = (

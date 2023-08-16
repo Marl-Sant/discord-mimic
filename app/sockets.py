@@ -14,13 +14,12 @@ else:
 # create your SocketIO instance
 socketio = SocketIO(cors_allowed_origins=origins)
 
-# handle chat messages
+
 
 @socketio.on('join_room')
 def on_join(data):
     room = data['room']
     join_room(room)
-    print("HIHIHIHHIHIHIHIH")
     emit('open_room', {'room': room}, broadcast=True)
 
 @socketio.on('leave_room')
@@ -31,9 +30,13 @@ def on_leave(data):
 
 @socketio.on("message")
 def on_chat_sent(data):
-    print(data, "adashnujhfuiohuijwnhfdiuwenhfduiwenfiuowendfeiuwodnuweiodfnewaiundfewaq@!#@!#@$!$!@#@$$!#$!#@$#$")
+    message = data['message']
+    room = data['room']
     emit('message', data['message'], to=data['room'])
 
-# @socketio.on("delete")
-# def delete(data):
-    
+@socketio.on('delete')
+def handle_delete_message(data):
+    message_id = data['messageId']
+    room_id = data['room']
+    print(message_id, room_id, "YOUR SOCKET IO IS BEING USED HERER~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!")
+    emit('delete', data['messageId'], data['channelId'], to=data['room'])

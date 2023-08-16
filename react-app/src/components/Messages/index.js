@@ -2,7 +2,7 @@ import "./Messages.css";
 import { useRef, useEffect, useState } from "react";
 import MessageOptions from "../MessageOptions"
 
-const Messages = ({ messages }) => {
+const Messages = ({ messages, handleMessageDelete }) => {
   const containerRef = useRef(null);
   const [hoveredMessageId, setHoveredMessageId] = useState(null);
 
@@ -38,7 +38,7 @@ const Messages = ({ messages }) => {
             <p>{message.content}</p>
           </div>
           <div className="message-content">
-          {hoveredMessageId === message.id && <MessageOptions message={message} />}
+          {hoveredMessageId === message.id && <MessageOptions message={message} handleMessageDelete={handleMessageDelete}/>}
           </div>
         </div>
       ))}

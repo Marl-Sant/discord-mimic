@@ -65,7 +65,7 @@ def put_channel_message(channel_id, message_id):
     if request.method == 'DELETE':
         db.session.delete(message)
         db.session.commit()
-        return {'messageId': message.id}
+        return {'messageId': message.id, "channelId": channel_id}
 
 #get all members on a channel
 @channel_routes.route('/<int:id>/members')
