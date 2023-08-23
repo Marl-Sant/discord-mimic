@@ -25,7 +25,7 @@ class Server(db.Model):
     created_at = db.Column(db.Date, default = datetime.datetime.now())
     updated_at = db.Column(db.Date, default = datetime.datetime.now())
 
-    members = db.relationship('ServerMember', backref='server', cascade='all, delete-orphan')
+    members = db.relationship('ServerMember', backref='server', cascade='all, delete-orphan', passive_deletes=True)
     channels = db.relationship('Channel', backref='server', cascade="all,delete-orphan")
 
 
@@ -68,7 +68,7 @@ class ServerMember(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    server_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('servers.id'), passive_deletes=True), nullable=False)
+    server_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('servers.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     created_at = db.Column(db.Date, default = datetime.datetime.now())
     updated_at = db.Column(db.Date, default = datetime.datetime.now())

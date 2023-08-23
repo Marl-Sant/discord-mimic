@@ -25,7 +25,7 @@ class Channel(db.Model):
     created_at = db.Column(db.Date, default = datetime.datetime.now())
     updated_at = db.Column(db.Date, default = datetime.datetime.now())
 
-    members = db.relationship('ChannelMember', backref='channel', cascade='all, delete-orphan')
+    members = db.relationship('ChannelMember', backref='channel', cascade='all, delete-orphan', passive_deletes=True)
     messages = db.relationship('ChannelMessage', backref='channel',cascade='all, delete-orphan')
 
     def to_dict(self):
@@ -59,7 +59,7 @@ class ChannelMember(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    channel_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('channels.id'), passive_deletes=True), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('channels.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     created_at = db.Column(db.Date, default = datetime.datetime.now())
     updated_at = db.Column(db.Date, default = datetime.datetime.now())

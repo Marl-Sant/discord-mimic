@@ -45,7 +45,7 @@ const SelectedChannel = () => {
 
     socket.on("delete", (data) => {
       // setMessages((messages) => [...messages, data["message"]]);
-      dispatch(deleteChannelMessage(data))
+      dispatch(deleteChannelMessage(data.messageId, data.channelId))
     });
 
     // socket.emit("join_room", {"room": socketRoom})

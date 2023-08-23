@@ -39,4 +39,4 @@ def handle_delete_message(data):
     message_id = data['messageId']
     room_id = data['room']
     print(message_id, room_id, "YOUR SOCKET IO IS BEING USED HERER~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!~!")
-    emit('delete', data['messageId'], data['channelId'], to=data['room'])
+    emit('delete', {'messageId': data['messageId'], 'channelId': data['channelId']}, to=data['room'], broadcast=True, include_self=False)
