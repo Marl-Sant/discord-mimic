@@ -131,7 +131,6 @@ export const removeChannelMessage = (messageId, channelId) => {
 
 export const deleteChannelMessage =
     (channelId, messageId) => async (dispatch) => {
-        console.log(channelId,"asdasddsdasdDFFDWEFE#FWRFWRFWFWSFDSFWDSFDSFSDF")
         const res = await fetch(
             `/api/channels/${channelId}/messages/${messageId}`,
             {
@@ -139,8 +138,6 @@ export const deleteChannelMessage =
             }
         );
         const deletedMessage = await res.json();
-
-        console.log(deletedMessage)
         dispatch(removeChannelMessage(deletedMessage.messageId, channelId));
     };
 

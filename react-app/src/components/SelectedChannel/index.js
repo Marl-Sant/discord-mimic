@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import OpenModalButton from "../OpenModalButton";
 import EditAChannel from "../EditAChannelModal";
-import { addChannelMessage, getAChannel, postMessage, deleteChannelMessage } from "../../store/channel";
+import { addChannelMessage, getAChannel, postMessage, deleteChannelMessage, removeChannelMessage } from "../../store/channel";
 import { io } from 'socket.io-client';
 let socket;
 
@@ -45,7 +45,7 @@ const SelectedChannel = () => {
 
     socket.on("delete", (data) => {
       // setMessages((messages) => [...messages, data["message"]]);
-      dispatch(deleteChannelMessage(data.messageId, data.channelId))
+      dispatch(removeChannelMessage(data.messageId, data.channelId,))
     });
 
     // socket.emit("join_room", {"room": socketRoom})
