@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteChannelMessage, editMessage } from "../../store/channel";
 import { io } from 'socket.io-client';
 let socket;
@@ -9,9 +9,11 @@ const MessagesOptions = ({ message, messages, handleMessageDelete }) => {
     const [socketRoom, setSocketRoom] = useState();
     const [showMore, setShowMore] = useState(false);
     const [messagesArray, setMessageArray] = useState(messages)
+    const currentUserId = useSelector((state) => state.session.user.id)
     const messageId = message.id
     const channelId = message.channelId
-  
+    const senderId = message.senderId
+    const isMessageOwner = currentUserId === senderId
     const dispatch = useDispatch();
 
     // useEffect(() => {
@@ -48,7 +50,9 @@ const MessagesOptions = ({ message, messages, handleMessageDelete }) => {
 
     return (
       <div>
+        {isMessageOwner && (
         <button onClick={() => setShowMore(!showMore)}>...</button>
+)}
         {showMore && (
           <div>
             <button onClick={() => handleMessageDelete(channelId, messageId)}>
