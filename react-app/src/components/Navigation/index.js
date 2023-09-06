@@ -12,6 +12,7 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
+	const currentServer = useSelector(state => state.serversReducer.currentServer.id)
 	let history = useHistory()
 	const dispatch = useDispatch();
 
@@ -20,6 +21,11 @@ function Navigation({ isLoaded }) {
 		await dispatch(demoUser())
 		history.push('/discovery')
 	}
+
+	if(sessionUser && !currentServer){
+		history.push('/discovery')
+	}
+	
 
 	return (
 		<div>
